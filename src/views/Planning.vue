@@ -8,11 +8,11 @@
         <section>
             <div>
                 <p>
-                    <strong>Девушка:</strong>
-                    12 122 из 14 0000
+                    <strong>Плата за квартиру:</strong>
+                    8500 из 140 000
                 </p>
                 <div class="progress">
-                    <div class="determinate green" style="width:40%"></div>
+                    <div class="determinate green" style="width:10%"></div>
                 </div>
             </div>
         </section>
