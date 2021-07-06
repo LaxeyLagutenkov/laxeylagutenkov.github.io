@@ -69,16 +69,22 @@ export default {
         password: {required, minLength: minLength(6)}
     },
     methods: {
-        onSubmit() {
+        async onSubmit() {
             if (this.$v.$invalid) {
                 this.$v.$touch()
                 return
             }
+            // create object with email and password
             const formData = {
                email: this.email,
                password: this.password 
             }
-            this.$router.push('/')
+            // use dispatch from auth.js (store)
+            try {
+                await this.$store.dispatch('login', formData)
+                this.$router.push('/')
+            }
+            catch(err) {}
         }
     },
     mounted() {

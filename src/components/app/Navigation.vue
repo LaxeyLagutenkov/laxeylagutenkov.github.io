@@ -42,7 +42,9 @@ export default {
         dropdown: null
     }),
     methods: {
-        logout() {
+        async logout() {
+            // call logout action from auth.js (store)
+            await this.$store.dispatch('logout')
             this.$router.push('/login?message=logout')
         }
     },

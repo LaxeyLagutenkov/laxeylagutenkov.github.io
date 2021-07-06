@@ -90,17 +90,23 @@ export default {
         agreement: {checked: value => value}
     },
     methods: {
-        onSubmit() {
+        async onSubmit() {
             if (this.$v.$invalid) {
                 this.$v.$touch()
                 return
             }
+            // create object with email and password
             const formData = {
                email: this.email,
                password: this.password,
                name: this.name
             }
-            this.$router.push('/')
+            // use dispatch from auth.js (store)
+            try {
+                await this.$store.dispatch('registration', formData)
+                this.$router.push('/')
+            }
+            catch(err) {}
         }
     }
 }
