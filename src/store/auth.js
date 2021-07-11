@@ -7,13 +7,15 @@ export default {
                 await firebase.auth().signInWithEmailAndPassword(email, password)
             }
             catch (error) {
+                // используем метод commit, кот. позволит изменять state в случае ошибки
+                commit('setError', error)
                 throw error
             }
         },
         async logout() {
             await firebase.auth().signOut()
         },
-        async registration({dispatch}, {email, password, name}) {
+        async registration({dispatch, commit}, {email, password, name}) {
             try {
                 // creating new record
                 await firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -26,6 +28,8 @@ export default {
                 })
             }
             catch(error) {
+                // используем метод commit, кот. позволит изменять state в случае ошибки
+                commit('setError', error)
                 throw error
             }
         },
